@@ -1,0 +1,176 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Randomixr</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="randomixr_logic.js"></script>
+	<script src="phonegap.js"></script>
+	
+</head> 
+
+<body> 
+	
+	<div data-role="page" id="start_page"> 
+		 
+		
+		<div data-role="content">
+			<center><img src="img/logo.png" /></center>
+			<div data-role="controlgroup" data-theme="a">
+				<a href="#coin_flip" data-role="button" data-theme="a">Flip a Coin</a>
+				<a href="#pick_number" data-role="button" data-theme="a">Pick a Number</a>
+				<a href="#draw_straws" data-role="button" data-theme="a">Draw Straws</a>
+				<a href="#arrow_spinner" data-role="button" data-theme="a">Spin the Arrow</a>
+				<!-- <a href="#expected_value_calc" data-role="button" data-theme="a">Expected Value Calculator</a> -->
+				<a href="#about_app" data-role="button" data-theme="a">About this program</a>	
+			</div>
+				
+		</div> 
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+ 	</div> <!--end mainpage -->
+	
+	
+	<div data-role="page" id="coin_flip"> 
+		<div data-role="header" data-position="inline">
+                <a href="#" data-rel="back" data-icon="back">Back</a>
+                <h1>Randomixr</h1>
+                <a href="#start_page" data-icon="home" >Home</a>
+		</div> 
+		<div data-role="content">
+			<h2>Flip a coin.</h2>
+			<a href="#" data-role="button" id="coin_flip_button">Flip That Coin!</a>
+			<div id="coin_flip_result" style="text-align: center; font-size: 3em; font-style: bold;"></div>
+		</div> 
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+    </div>
+	
+	
+	
+	
+	<div data-role="page" id="pick_number"> 
+		<div data-role="header" data-position="inline">
+                <a href="<?=$_SERVER['HTTP_REFERER']; ?>" data-rel="back" data-icon="back">Back</a>
+                <h1>Randomixr</h1>
+                <a href="#start_page" data-icon="home" >Home</a>
+		</div>
+		<div data-role="content">
+			<h2>Pick a number.</h2>
+			<form action="post" id="pick_a_number_form" >
+				<p>Between:</p>	
+				<label for="slider-1">Low number:</label>
+				<input type="range" name="slider-1" id="slider-1" value="1" min="0" max="100" />
+				<p>and</p>
+				
+				<label for="slider-2">High number:</label>
+				<input type="range" name="slider-2" id="slider-2" value="100" min="0" max="100" />
+				<a href="#" data-role="button" id="pick_a_number_button">Pick That Number!</a>
+			</form>
+			<div id="pick_a_number_result" style="text-align: center; font-size: 3em; font-style: bold;"></div>
+		
+		
+		</div> 
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+    </div>
+	
+	
+	
+	
+	<div data-role="page" id="draw_straws"> 
+		<div data-role="header" data-position="inline">
+                <a href="<?=$_SERVER['HTTP_REFERER']; ?>" data-rel="back" data-icon="back">Back</a>
+                <h1>Randomixr</h1>
+                <a href="#start_page" data-icon="home" >Home</a>
+		</div> 
+		<div data-role="content">
+			<h2>Draw straws.</h2>
+			
+			<form action="post" id="draw_straws_form">
+				<label for="slider-3">How many players?</label>
+				<input type="range" name="slider-3" id="slider-3" value="3" min="3" max="100" />
+				<a href="#" data-role="button" id="draw_straws_init">Set up them straws!</a>
+			</form>	
+			<div id="draw_straws_result"></div>
+			<a href="#" data-role="button" id="draw_next_straw" style="display:none;">Draw a straw!</a>
+			
+		</div> 
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+    </div>
+    
+    <div data-role="page" id="expected_value_calc"> 
+		<div data-role="header" data-position="inline">
+                <a href="<?=$_SERVER['HTTP_REFERER']; ?>" data-rel="back" data-icon="back">Back</a>
+                <h1>Randomixr</h1>
+                <a href="#start_page" data-icon="home" >Home</a>
+		</div> 
+		<div data-role="content">
+			<h2>Flip a coin.</h2>
+			<a href="#" data-role="button">Flip That Coin!</a>
+			<div id="coin_flip_result"></div>
+		</div> 
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+    </div>
+    
+    <div data-role="page" id="about_app"> 
+		<div data-role="header" data-position="inline">
+                <a href="<?=$_SERVER['HTTP_REFERER']; ?>" data-rel="back" data-icon="back">Back</a>
+                <h1>Randomixr</h1>
+                <a href="#start_page" data-icon="home" >Home</a>
+		</div>
+		<div data-role="content">
+			<h2>What's all this about then?</h2>
+			<p>Look, we're all busy people.  And we all face decisions every day.  So why waste your own brain power trying to make those decisions, when a random answer will likely do just as well?</p>
+			<p>That's why I created Randomixr.</p>
+			<ul>
+				<li>Pizza or burgers?  Just flip a coin, and you're done.</li>
+				<li>Need to figure out which of the dozen options to try?  Pick a random number and see how it goes.</li>
+				<li>Nobody wants to go on the beer run?  Draw straws, and there's no more controversy.</li>	
+				<li>Want to play a kissy game, but don't have a bottle?  Try spinning a spinner! Also good for picking which direction to go next!</li>	
+			</ul>
+			<p>If you love this app and find it useful, why not consider chipping in a little bit of beer money for me?</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="XG95GRC88DA6U">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+
+		</div> 
+		
+			
+		</div>
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+    </div>
+    
+    
+    
+    <div data-role="page" id="arrow_spinner"> 
+		<div data-role="header" data-position="inline">
+                <a href="<?=$_SERVER['HTTP_REFERER']; ?>" data-rel="back" data-icon="back">Back</a>
+                <h1>Randomixr</h1>
+                <a href="#start_page" data-icon="home" >Home</a>
+		</div>
+		<div data-role="content">
+			<h2>Spin the Arrow</h2>
+			<div id="spinner_background" name="spinner_background">
+			<center><img src="img/pointer-sm.png" style="-webkit-transition: -webkit-transform 2s ease-out;" name="spinner_pointer" id="spinner_pointer"></center>
+			</div>
+			<a href="#" data-role="button" id="spin_button">Spin that sucker!</a>
+			<label for="select-choice-0" class="select">Background:</label>
+			<select name="select-background" id="select-background">
+   				<option value="None">None</option>
+   				<option value="Compass">Compass</option>
+   				<option value="Clock">Clock</option>
+   				<option value="Roulette">Roulette</option>
+			</select>
+		</div> 
+		<div data-role="footer"><h4>Brought to you by <a href="http://www.ianmonroe.com" rel="external">IanMonroe.com</a></h4></div> 
+    </div>
+    
+    
+    
+</body>
+</html>

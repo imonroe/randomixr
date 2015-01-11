@@ -25,16 +25,16 @@ $(document).ready(function(){
      
    });
    
-   $("#pick_a_number_button").click(function(event) {
+  $("#pick_a_number_button").click(function(event) {
        console.log("picking that number.")
        var lowlimit, highlimit;
-       lowlimit = $("#slider-1").val();
-       highlimit = $("#slider-2").val();
+       lowlimit = parseInt($("#slider-1").val());
+       highlimit = parseInt($("#slider-2").val());
        console.log("low limit ="+lowlimit);
        console.log("high limit = "+highlimit);
        outcome = pick_a_number(lowlimit, highlimit);
        if (outcome < lowlimit){
-       	outcome = pick_a_number(lowlimit, highlimit);
+       	outcome = parseInt(pick_a_number(lowlimit, highlimit))+parseInt(lowlimit);
        }
        $("#pick_a_number_result").html(outcome);
        
